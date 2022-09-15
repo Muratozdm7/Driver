@@ -36,4 +36,19 @@ public class CarController : MonoBehaviour
         lw.localRotation = Quaternion.Euler(rotVec);
         rw.localRotation = Quaternion.Euler(rotVec);
     }
+
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "Coin") //Coin toplama kodu
+        {
+            PuanText.coinMiktar += 1;
+            Destroy(collider.gameObject);
+        }
+
+        if(collider.gameObject.tag == "Engel") //Engele çarpma kodu oyunu durdurur
+        {
+            Time.timeScale = 0f;
+        }
+    }
 }
